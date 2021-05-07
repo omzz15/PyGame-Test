@@ -5,6 +5,7 @@ import GameObject
 import GameObjectManager
 import Grid
 import Utils
+import time
 
 #user variables
 size = pygame.Vector2(852, 480)
@@ -31,7 +32,7 @@ print("pygame initialized")
 
 print("creating gameObjects...")
 
-GOM = GameObjectManager.test()
+GOM = GameObjectManager.GameObjectManager()
 
 for i in range(10):
     grid = Grid.Grid(minPosVal, maxPosVal, Utils.Utils.makeRandVector2(minPosVal, maxPosVal))
@@ -46,7 +47,9 @@ while 1:
       if event.type == pygame.QUIT:
           pygame.exit()
           sys.exit()
+    startTime = time.time()
     screen.fill((0, 0, 0))
-    GOM.runAll()
+    GOM.runAll()    
     pygame.display.update()
+    print(time.time() - startTime)
     #print(f"X : {gameObject.grid.position.x}, Y : {gameObject.grid.position.y}")
